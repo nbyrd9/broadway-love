@@ -1,0 +1,24 @@
+<% @errors && @errors.each do |e| %>
+  <li><%=e%></li>
+<%end%>
+
+
+
+  <%if @show%>
+    <h3><%=@show.name%></h3>
+  <%end%>
+
+
+  <%= form_for(@review, url: form_url_helper(@show)) do |f|%>
+  <%=f.label "Rating"%>
+  <%=f.text_field(:rating)%>
+  <%=f.label "Location"%>
+  <%=f.text_field(:location)%>
+  <%=f.label "Comment"%>
+  <%=f.text_field(:comment)%>
+  <%if !@show%>
+    <%=f.label "Show"%>
+    <%=f.collection_select(:show_id, @shows, :id, :name) %>
+  <%end%>
+  <%=f.submit("Save")%>
+<%end%>

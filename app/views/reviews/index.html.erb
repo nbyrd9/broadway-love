@@ -1,0 +1,9 @@
+<h1>Search by Location</h1>
+
+<%form_tag reviews_path, method: :get do %>
+ <%=text_field_tag :location %>
+  <%=submit_tag "Search"%>
+<%end%>
+
+
+<%=render(partial: 'reviews', locals: {measurements: @reviews, index: true})%>

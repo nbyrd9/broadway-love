@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_26_152209) do
+ActiveRecord::Schema.define(version: 2021_03_29_142106) do
 
   create_table "reviews", force: :cascade do |t|
     t.integer "user_id"
     t.integer "show_id"
-    t.string "rating"
+    t.integer "rating"
     t.string "location"
     t.string "comment"
     t.datetime "created_at", precision: 6, null: false

@@ -11,7 +11,7 @@
 
   <%= form_for(@review, url: form_url_helper(@show)) do |f|%>
   <%=f.label "Rating"%>
-  <%=f.text_field(:rating)%>
+  <%=f.number_field(:rating)%>
   <%=f.label "Location"%>
   <%=f.text_field(:location)%>
   <%=f.label "Comment"%>

@@ -5,7 +5,7 @@
     <%=f.text_field(:description)%>
     <%=f.fields_for :reviews do |r|%>
         <%=r.label "Rating"%>
-        <%=r.text_field :rating%>
+        <%=r.number_field :rating%>
         <%=r.label "Location"%>
         <%=r.text_field :location%>
         <%=r.label "Comment"%>

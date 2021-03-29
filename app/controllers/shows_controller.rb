@@ -32,18 +32,24 @@ class ShowsController < ApplicationController
     end
 
     def update
-        
+        if @show.update(show_params)
+            redirect_to show_path(@show)
+        else
+            @errors = @show.errors.full_messages
+            render :edit
+        end
     end
 
     def destroy
+        @show.delete
+        redirect_to shows_path
     end
 
     private
 
     def show_params
+        params.require(:show).permit(:name, :description, reviews_attributes: [:rating, :location, :comment]))
     end
-
-
 
 
 

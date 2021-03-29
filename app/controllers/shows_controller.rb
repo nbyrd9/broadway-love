@@ -2,7 +2,7 @@ class ShowsController < ApplicationController
 
     def index
         if logged_in?
-            user = current_user ##check this method
+            user = current_user #check this method
             @shows = user.shows
         else
             @shows = Show.all 
@@ -48,9 +48,8 @@ class ShowsController < ApplicationController
     private
 
     def show_params
-        params.require(:show).permit(:name, :description, reviews_attributes: [:rating, :location, :comment]))
+        params.require(:show).permit(:name, :description, 
+                                    reviews_attributes: [:rating, :location, :comment]))
     end
-
-
 
 end

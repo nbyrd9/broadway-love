@@ -1,0 +1,15 @@
+<%=form_for @show do |f|%>
+    <%=f.label("Show Name:")%>
+    <%=f.text_field(:name)%>
+    <%=f.label("Show Description:")%>
+    <%=f.text_field(:description)%>
+    <%=f.fields_for :reviews do |r|%>
+        <%=r.label "Rating"%>
+        <%=r.text_field :rating%>
+        <%=r.label "Location"%>
+        <%=r.text_field :location%>
+        <%=r.label "Comment"%>
+        <%=r.text_field :comment%>
+    <%end%> 
+    <%f.submit "Submit"%>
+<%end%>

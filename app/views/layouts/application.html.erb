@@ -12,6 +12,18 @@
   </head>
 
   <body>
+    <body>
+    <%if current_user %>
+    <%=link_to "All Shows", shows_path %>
+    <%=link_to "New Show", new_show_path %>
+    <%=link_to "New Review", new_review_path %>
+    <%=link_to "All Reviews", reviews_path %>
+    <%=link_to "My Shows", user_shows_path(current_user) %>
+    <%= button_to "Log Out", logout_path, method: :post %>
+    <%else%>
+      <%= link_to "Log In", login_path %>
+      <%= link_to "Sign Up", signup_path %>
+    <%end%>
     <%= yield %>
   </body>
 </html>

@@ -9,13 +9,13 @@
   <%end%>
 
 
-  <%= form_for(@review, url: form_url_helper(@show)) do |f|%>
-  <%=f.label "Rating"%>
-  <%=f.number_field(:rating)%>
-  <%=f.label "Location"%>
-  <%=f.text_field(:location)%>
-  <%=f.label "Comment"%>
-  <%=f.text_field(:comment)%>
+  <%= form_for(@review, url: show_reviews_path(@show)) do |f|%>
+    <%=f.label "Rating"%>
+    <%=f.number_field(:rating)%>
+    <%=f.label "Location"%>
+    <%=f.text_field(:location)%>
+    <%=f.label "Comment"%>
+    <%=f.text_field(:comment)%>
   <%if !@show%>
     <%=f.label "Show"%>
     <%=f.collection_select(:show_id, @shows, :id, :name) %>

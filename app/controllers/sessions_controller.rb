@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
       @user = User.find_by(username: params[:user][:username])
       if @user && @user.authenticate(params[:user][:password])
         session[:user_id] = @user.id
-        redirect_to user_items_path(@user)
+        redirect_to user_shows_path(@user)
       elsif @user
         @errors = ["Invalid Password"]
         render :new
@@ -33,7 +33,7 @@ class SessionsController < ApplicationController
   
     def destroy
       session.clear
-      redirect_to '/signup'
+      redirect_to '/login'
     end
   
     private

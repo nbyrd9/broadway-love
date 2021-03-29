@@ -1,11 +1,15 @@
 class ShowsController < ApplicationController
+    before_action(:set_show, except: [:index, :new, :create])
+    # before_action :authenticate, except: [:create, :new]
 
+    layout "application"
+    
     def index
-        if logged_in?
-            user = current_user #check this method
+        if params[:user_id]
+            user = User.find_by(id: params[:user_id])
             @shows = user.shows
         else
-            @shows = Show.all 
+            @shows = Show.all
         end
     end
 
@@ -14,10 +18,13 @@ class ShowsController < ApplicationController
 
     def new
         @show = Show.new
+        @show.reviews.build(user: current_user)
+        @review = @show.reviews.select{|r| r.user_id == current_user }
     end
 
     def create
         @show = Show.new(show_params)
+        @show.reviews.each {|r| r.user = current_user}
         if @show.save
             flash[:notice] = "Brava! Your show has successfully been submitted." 
             redirect_to show_path(@show)
@@ -35,6 +42,7 @@ class ShowsController < ApplicationController
         if @show.update(show_params)
             redirect_to show_path(@show)
         else
+            # @r = @s 
             @errors = @show.errors.full_messages
             render :edit
         end
@@ -47,13 +55,13 @@ class ShowsController < ApplicationController
 
     private
 
-    def set_show
-        @show = Show.find_by(:id params[:id])
-    end
-
     def show_params
         params.require(:show).permit(:name, :description, 
-                                    reviews_attributes: [:rating, :location, :comment]))
+                                    reviews_attributes: [:rating, :location, :comment, :user_id, :id])
+    end
+
+    def set_show
+        @show = Show.find_by(id: params[:id])
     end
 
 end

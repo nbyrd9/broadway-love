@@ -1,5 +1,12 @@
 class ReviewsController < ApplicationController
+    layout "application"
+
     def index 
+        if params[:location]
+            @reviews = Review.location_search(params[:location])
+        else
+            @reviews = Review.all
+        end
     end
 
     def new
@@ -33,7 +40,7 @@ class ReviewsController < ApplicationController
     private
 
     def review_params
-        params.require(:review).permit(:show_id, :rating, :location, :comment)
+        params.require(:review).permit(:rating, :location, :comment, :show_id)
     end
 
 end

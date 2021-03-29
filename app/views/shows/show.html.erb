@@ -1,0 +1,12 @@
+<h1><%=@show.name%></h1>
+<%=render partial: 'reviews/reviews', locals: {reviews: @show.reviews, index: false}%><br>
+
+
+<%=link_to "Add Performance to Theater", new_show_review_path(@show) %><br><br>
+
+
+<%=link_to "Edit",  edit_show_path(@show)%><br><br>
+
+
+
+<%=button_to("Delete", @show, method: :delete, data: { confirm: "Really?" }) %>

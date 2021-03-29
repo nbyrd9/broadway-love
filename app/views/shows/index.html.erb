@@ -1,0 +1,4 @@
+<h1>All Broadway Shows</h1>
+<%@shows.each do |show|%>
+  <li><%=link_to(show.name, show_path(show))%></li>
+<%end%>

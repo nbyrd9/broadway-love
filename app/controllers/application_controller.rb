@@ -14,8 +14,6 @@ class ApplicationController < ActionController::Base
         redirect_to login_path if !logged_in?
     end
 
-    def set_show
-        @show = Show.find_by(:id params[:id])
-    end
+   
 
 end

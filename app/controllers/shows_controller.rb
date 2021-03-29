@@ -47,6 +47,10 @@ class ShowsController < ApplicationController
 
     private
 
+    def set_show
+        @show = Show.find_by(:id params[:id])
+    end
+
     def show_params
         params.require(:show).permit(:name, :description, 
                                     reviews_attributes: [:rating, :location, :comment]))

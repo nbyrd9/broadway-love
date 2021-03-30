@@ -48,7 +48,7 @@ body {
 	margin: 10px 0 15px;
 }
 .signup-form .hint-text {
-	color: #999;
+	color: #000000;
 	text-align: center;
 	margin-bottom: 20px;
 }
@@ -123,7 +123,7 @@ body {
 </head>
 
 
-<h1>Sign Up</h1>
+<%#<h1>Sign Up</h1>%>
 
     <% @errors && @errors.each do |e| %>
         <li><%=e%></li>
@@ -134,10 +134,8 @@ body {
 <div class="signup-form">
     <form action="/examples/actions/confirmation.php" method="post">
 		<h2>Create an Account</h2>
-		<p class="hint-text">Sign up with your social media account or email address</p>
+		<p class="hint-text">Sign up with your Google account or username</p>
 		<div class="social-btn text-center">
-			<a href="#" class="btn btn-primary btn-lg"><i class="fa fa-facebook"></i> Facebook</a>
-			<a href="#" class="btn btn-info btn-lg"><i class="fa fa-twitter"></i> Twitter</a>
 			<a href="#" class="btn btn-danger btn-lg"><i class="fa fa-google"></i> Google</a>
 		</div>
 		<div class="or-seperator"><b>or</b></div>
@@ -148,22 +146,22 @@ body {
 
 		<div class="form-group">
             <div> <%=f.label "Password"%></div>
-            <%=f.password_field :password, class: "form-control input-lg" %> 
+         <%=f.password_field :password, class: "form-control input-lg" %> 
         </div>
-
 		<div class="form-group">
-        <div> <%=f.label "Password Confirmation"%></div>
-         <%=f.password_field :password_confirmation, class: "form-control input-lg" %> 
-  
+		<div> <%=f.label "Password Confirmation"%></div>
+             <%=f.password_field :password_confirmation, class: "form-control input-lg" %> 
         </div>  
         <div class="form-group">
             <button type="submit" class="btn btn-success btn-lg btn-block signup-btn">Sign Up</button>
         </div>
     </form>
-    <div class="text-center">Already have an account? <a href="#">Login here</a></div>
+    <div class="text-center">Already have an account? <%=link_to "Log In Here", login_path %></div>
 </div>
 </body>
 </html>
+<%end%>
+
 
 
 
@@ -174,4 +172,3 @@ body {
     <%#f.label "Password Confirmation"%>
     <%#f.password_field :password_confirmation %>
     <%#f.submit "Sign Up"%>
-<%end%>

@@ -1,8 +1,8 @@
-<h1>Search by Location</h1>
+<h1>Search by Rating</h1>
 
-<%form_tag reviews_path, method: :get do %>
- <%=text_field_tag :location %>
-  <%=submit_tag "Search"%>
+<%=form_with url: reviews_path, method: :get do  |f|%>
+ <%=f.number_field :rating %>
+  <%=f.submit "Search"%>
 <%end%>
 
 

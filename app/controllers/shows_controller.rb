@@ -8,6 +8,7 @@ class ShowsController < ApplicationController
         if params[:user_id]
             user = User.find_by(id: params[:user_id])
             @shows = user.shows
+        
         else
             @shows = Show.all
         end
@@ -36,13 +37,14 @@ class ShowsController < ApplicationController
     end 
 
     def edit
+        @reviews = @show.reviews.where(user_id: current_user.id)
     end
 
     def update
         if @show.update(show_params)
             redirect_to show_path(@show)
         else
-            # @r = @s 
+            @reviews = @show.reviews.select{|r| r.user_id == current_user.id }
             @errors = @show.errors.full_messages
             render :edit
         end

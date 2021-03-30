@@ -3,7 +3,7 @@
     <%=f.text_field(:name)%>
     <%=f.label("Show Description:")%>
     <%=f.text_field(:description)%>
-    <%=f.fields_for :reviews, current_user.reviews do |r|%>
+    <%=f.fields_for :reviews do |r|%>
         <%=r.label "Rating"%>
         <%=r.number_field :rating%>
         <%=r.label "Location"%>

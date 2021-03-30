@@ -2,8 +2,8 @@ class ReviewsController < ApplicationController
     layout "application"
 
     def index 
-        if params[:location]
-            @reviews = Review.location_search(params[:location])
+        if params[:rating]
+            @reviews = Review.rating_search(params[:rating])
         else
             @reviews = Review.all
         end
@@ -26,8 +26,13 @@ class ReviewsController < ApplicationController
         if params[:show_id]
             @review.show_id = params[:show_id]
         end
-        @review.save
-        redirect_to shows_path
+        if @review.save
+            redirect_to shows_path
+        else   
+            @shows = Show.all
+            render :new
+        end
+
     end
 
     def edit

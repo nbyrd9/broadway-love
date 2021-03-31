@@ -21,6 +21,10 @@
   <%if !@show%>
     <%=f.label "Show:"%>
     <%=f.collection_select(:show_id, @shows, :id, :name) %>
+  <%else%>
+  <%=f.hidden_field :show_id%>
+  
   <%end%>
   <%=f.submit("Submit")%>
 <%end%>
+

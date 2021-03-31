@@ -21,6 +21,7 @@ class ReviewsController < ApplicationController
     end
 
     def create
+        # byebug
         @review = Review.create(review_params)
         @review.user = current_user
         if params[:show_id]
@@ -35,12 +36,23 @@ class ReviewsController < ApplicationController
 
     end
 
-    # def edit
-    # end
+    def edit
+
+    end
 
 
-    # def update
-    # end
+    def update
+        if @review.update(review_params)
+            redirect_to show_path(@show)
+        else
+            render :edit
+        end
+    end
+
+    # def destroy
+    #     @review.destroy 
+    #     redirect_to show_path(@show)
+    #   end 
 
     private
 

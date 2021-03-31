@@ -13,7 +13,4 @@ class ApplicationController < ActionController::Base
     def authenticate
         redirect_to '/login' if !current_user
     end
-
-   
-
 end

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  resources :users, except: [:new, :create] do
-    resources(:shows)
+  resources :users, except: [:show, :index, :new, :create, :destroy, :patch, :put] do
+    resources(:shows, except: [:show, :edit, :update, :destroy, :put] )
   end
   
   resources :shows do

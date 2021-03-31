@@ -1,6 +1,6 @@
 class ShowsController < ApplicationController
     before_action(:set_show, except: [:index, :new, :create])
-    # before_action :authenticate, except: [:create, :new]
+    # before_action :authenticate,
 
     layout "application"
     
@@ -20,7 +20,7 @@ class ShowsController < ApplicationController
     def new
         @show = Show.new
         @show.reviews.build(user: current_user)
-        @review = @show.reviews.select{|r| r.user_id == current_user }
+        @reviews = @show.reviews.select{|r| r.user_id == current_user.id}
     end
 
     def create
@@ -30,7 +30,7 @@ class ShowsController < ApplicationController
             flash[:notice] = "Brava! Your show has successfully been submitted." 
             redirect_to show_path(@show)
         else
-            redirect_to new_show_path
+            @reviews = @show.reviews.select{|r| r.user_id == current_user.id}
             @errors = @show.errors.full_messages
             render :new
         end
@@ -51,7 +51,7 @@ class ShowsController < ApplicationController
     end
 
     def destroy
-        @show.delete
+        @show.destroy
         redirect_to shows_path
     end
 

@@ -3,22 +3,24 @@
 <%end%>
 
 
+<h1>Add A New Review!</h1>
 
+<br>
   <%if @show%>
     <h3><%=@show.name%></h3>
   <%end%>
 
 
   <%= form_for(@review, url: show_reviews_path(@show)) do |f|%>
-    <%=f.label "Rating"%>
-    <%=f.number_field(:rating)%>
-    <%=f.label "Location"%>
-    <%=f.text_field(:location)%>
-    <%=f.label "Comment"%>
-    <%=f.text_field(:comment)%>
+    <%=f.label "Rating:"%>
+    <%=f.number_field(:rating)%> <br>
+    <%=f.label "Location:"%>
+    <%=f.text_field(:location)%> <br>
+    <%=f.label "Comment:"%>
+    <%=f.text_field(:comment)%> <br>
   <%if !@show%>
-    <%=f.label "Show"%>
+    <%=f.label "Show:"%>
     <%=f.collection_select(:show_id, @shows, :id, :name) %>
   <%end%>
-  <%=f.submit("Save")%>
+  <%=f.submit("Submit")%>
 <%end%>

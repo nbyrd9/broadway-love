@@ -45,7 +45,9 @@
     </nav>
     </head>
 
-
+<% flash.each do |k, v| %>
+      <div class=<%= k %> ><%= v %></div>
+<% end %>
 
     <%#else%>
       <%# link_to "Log In", login_path %>

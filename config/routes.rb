@@ -20,4 +20,5 @@ Rails.application.routes.draw do
   post '/signup', to: "users#create"
   post '/logout', to: "sessions#destroy"
   get "/auth/google_oauth2/callback", to: "sessions#google_oauth2"
+  post '/reviews/:id', to: "reviews#destroy"
 end

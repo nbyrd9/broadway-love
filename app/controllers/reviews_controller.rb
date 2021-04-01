@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
     layout "application"
+    before_action :set_review, only: [:edit, :update, :destroy]
 
     def index 
         if params[:rating]
@@ -37,27 +38,32 @@ class ReviewsController < ApplicationController
     end
 
     def edit
-
+   
     end
 
 
     def update
         if @review.update(review_params)
-            redirect_to show_path(@show)
+            redirect_to show_path(@review.show)
         else
             render :edit
         end
     end
 
     def destroy
+        
         @review.destroy
-        redirect_to show_path(@show)
+        redirect_to show_path(@review.show)
       end 
 
     private
 
     def review_params
         params.require(:review).permit(:rating, :location, :comment, :show_id)
+    end
+
+    def set_review
+        @review = Review.find_by(id: params[:id])
     end
 
 end

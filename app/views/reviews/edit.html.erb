@@ -1,3 +1,11 @@
-<%=render(partial: 'reviews', locals: {reviews: @reviews, index: true})%>
-
-<%#this is where you left off, you created a new edit erb file%>
+<%= form_for(@review) do |f|%>
+    <%=f.label "Rating:"%>
+    <%=f.number_field(:rating)%> <br>
+    <%=f.label "Location:"%>
+    <%=f.text_field(:location)%> <br>
+    <%=f.label "Comment:"%>
+    <%=f.text_area(:comment)%> <br>
+ 
+  <%#f.hidden_field :show_id%>
+  <%=f.submit("Submit")%>
+<%end%>

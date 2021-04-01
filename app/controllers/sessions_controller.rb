@@ -18,18 +18,33 @@ class SessionsController < ApplicationController
       end
     end
   
-  
-    # def create_with_fb
-    #   user = User.find_or_create_by(username: fb_auth['info']['email']) do |u|
-    #     u.password = 'password'
-    #   end
-    #   if user.save
-    #     session[:user_id] = user.id
-    #     redirect_to user_items_path(user)
-    #   else
-    #     redirect_to signup_path
-    #   end
+    # def google_oauth2
+    #   @user = User.from_omniauth(request.env["omniauth.auth"])
+    #   sign_in_and_redirect @user
     # end
+
+  
+    def google_oauth2
+      user = User.find_or_create_by(username: google_auth['info']['email']) do |u|
+        u.password = 'password'
+      end
+      if user.save
+        session[:user_id] = user.id
+        redirect_to user_shows_path(user)
+      else
+        redirect_to '/signup'
+      end
+    end
+
+
+    # def signin_google_oauth2
+    #   access_token = request.env["omniauth.auth"]
+    #   user = User.from_omniauth(access_token)
+    #   session[:user_id] = user.id
+    #   user.google_token = access_token.credentials.access_token
+    #   user.save
+    # end
+
   
     def destroy
       session.clear
@@ -38,9 +53,9 @@ class SessionsController < ApplicationController
   
     private
   
-    # def fb_auth
-    #    self.request.env['omniauth.auth']
-    # end
+    def google_auth
+       self.request.env['omniauth.auth']
+    end
   
   
   end

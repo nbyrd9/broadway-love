@@ -1,10 +1,8 @@
 <%reviews.each do |r|%>
    <li> <%=show_show_name(r, index)%> <br> <%="Rating:"%>  <%=r.rating%> <br> <%="Location:"%> <%=r.location%> <br> <%="Comment:"%> <%=r.comment%> </li> 
    <% if r.user_id == current_user.id %>
-      
-      
       <%= link_to "Edit",  edit_review_path(r)%>
-      <%=button_to("Delete", r, method: :delete, data: { confirm: "Are You Sure?" }) %>
+      <%=button_to("Delete", r, method: :destroy, data: { confirm: "Are You Sure?" }) %>
    <%end%>
 <%end%>
 

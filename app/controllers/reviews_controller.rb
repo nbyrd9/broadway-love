@@ -49,10 +49,10 @@ class ReviewsController < ApplicationController
         end
     end
 
-    # def destroy
-    #     @review.destroy 
-    #     redirect_to show_path(@show)
-    #   end 
+    def destroy
+        @review.destroy
+        redirect_to show_path(@show)
+      end 
 
     private
 

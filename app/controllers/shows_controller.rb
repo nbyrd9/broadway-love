@@ -1,6 +1,6 @@
 class ShowsController < ApplicationController
     before_action(:set_show, except: [:index, :new, :create])
-    # before_action :authenticate,
+    before_action :authenticate
 
     layout "application"
     

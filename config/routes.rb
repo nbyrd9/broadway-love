@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  resources :users, except: [:show, :index, :new, :create, :destroy, :patch, :put] do
-    resources(:shows, except: [:show, :edit, :update, :destroy, :put] )
+  resources :users, except: [:new, :create] do
+    resources(:shows)
   end
   
   resources :shows do
@@ -19,4 +19,5 @@ Rails.application.routes.draw do
   get '/signup', to: "users#new", as: "signup"
   post '/signup', to: "users#create"
   post '/logout', to: "sessions#destroy"
+  get "/auth/google_oauth2/callback", to: "sessions#google_oauth2"
 end

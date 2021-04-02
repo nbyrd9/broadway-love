@@ -1,24 +1,23 @@
-# README
+# Description
+Welcome to Braodway Love! This site is intented to allow users to post, update and keep track of their favorite Broadway performances around the world. Users can see  performances posted by other users, see their ratings and comments, and learn more about specific shows in different areas. 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Use this site to fall in love with Broadway!
 
-Things you may want to cover:
 
-* Ruby version
+# Install Instructions
+To install, fork and clone this repository. CD (change directory) into the directory.
 
-* System dependencies
+Execute:
 
-* Configuration
+```bundle install```
 
-* Database creation
+Run ``rails s``` in the console.
 
-* Database initialization
+Open your browser, and enter the local URL provided by the rails server.
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+# Contributing
+Bug reports and pull requests are welcome on GitHub at https://github.com/nbyrd9/broadway-love. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](https://github.com/PurpleBooth/a-good-readme-template/blob/main/CONTRIBUTING.md) 
 
-* Deployment instructions
-
-* ...
+# License
+This project is licensed under the [CC0 1.0 Universal Creative Commons License](https://github.com/PurpleBooth/a-good-readme-template/blob/main/LICENSE.md) - see the [LICENSE.md](https://github.com/PurpleBooth/a-good-readme-template/blob/main/LICENSE.md) file for details.

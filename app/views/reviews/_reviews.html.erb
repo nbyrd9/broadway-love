@@ -1,5 +1,5 @@
 <%reviews.each do |r|%>
-    <h3><%=show_show_name(r, index)%> </h3><br> <%="Rating:"%>  <%=r.rating%> <br> <%="Location:"%> <%=r.location%> <br> <%="Comment:"%> <%=r.comment%> 
+    <hr><h5> <i> <%=show_show_name(r, index)%> </i> </h5>  <%="Rating:"%>  <%=r.rating%> <br> <%="Location:"%> <%=r.location%> <br> <%="Comment:"%> <%=r.comment%> 
    <% if r.user_id == current_user.id %>
    <br>
       <%= link_to "Edit",  edit_review_path(r)%>

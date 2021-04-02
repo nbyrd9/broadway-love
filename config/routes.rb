@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :users, except: [:new, :create] do
-    resources(:shows)
+    resources :shows
   end
   
   resources :shows do
@@ -21,4 +21,8 @@ Rails.application.routes.draw do
   post '/logout', to: "sessions#destroy"
   get "/auth/google_oauth2/callback", to: "sessions#google_oauth2"
   post '/reviews/:id', to: "reviews#destroy"
+  # get '/shows/:id', to: "shows#index"
+  # get '/shows/:show_id/reviews/new', to: "reviews#new"
+  # post '/shows/:show_id/reviews/new', to: "reviews#new"
+  # post '/shows/:show_id/reviews', to: "reviews#create"
 end

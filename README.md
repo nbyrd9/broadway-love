@@ -11,7 +11,7 @@ Execute:
 
 ```bundle install```
 
-Run ``rails s``` in the console.
+Run ```rails s``` in the console.
 
 Open your browser, and enter the local URL provided by the rails server.
 

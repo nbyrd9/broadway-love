@@ -4,14 +4,16 @@
 
 
 <h1>Add A New Review!</h1>
-
 <br>
+
+<h7 style="color:DodgerBlue;"> <i> Complete all fields and rate each show on a scale from 1 - 5, with 5 being the very best! </i> </h7>
+
   <%if @show%>
     <h3><%=@show.name%></h3>
   <%end%>
 
 
-  <%= form_for(@review, url: show_reviews_path(@show)) do |f|%>
+  <%= form_for(@review, url: show_reviews_helper(@show)) do |f|%>
     <%=f.label "Rating:"%>
     <%=f.number_field(:rating)%> <br>
     <%=f.label "Location:"%>
@@ -21,8 +23,13 @@
   <%if !@show%>
     <%=f.label "Show:"%>
     <%=f.collection_select(:show_id, @shows, :id, :name) %>
+     <%#elsif @show.exists?%>
+
+
   <%else%>
-  <%=f.hidden_field :show_id%>
+    <%=f.hidden_field :show_id, value: @show.id%>
+    <%#.hidden_field :review_id%>
+
   
   <%end%>
   <%=f.submit("Submit")%>

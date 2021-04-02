@@ -1,5 +1,5 @@
 <h1><%=@show.name%></h1>
-
+<h7> <i> <%=@show.description%></h7> </i>
 
 <%=render partial: 'reviews/reviews', locals: {reviews: @show.reviews, index: false}%><br>
 
@@ -8,7 +8,7 @@
 
 
 
-<%#link_to "Edit",  edit_show_path(@show)%><br><br>
+<%=link_to "Add a New Review", new_show_review_path(@show)%><br><br>
 
 
 

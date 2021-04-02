@@ -11,6 +11,7 @@ class ReviewsController < ApplicationController
     end
 
     def new
+        # byebug
         if params[:show_id]
             @show = Show.find_by(id: params[:show_id])
             @review = @show.reviews.build
@@ -29,16 +30,15 @@ class ReviewsController < ApplicationController
             @review.show_id = params[:show_id]
         end
         if @review.save
+            flash[:notice] = "Thanks for your review!" 
             redirect_to shows_path
         else   
             @shows = Show.all
             render :new
         end
-
     end
 
     def edit
-   
     end
 
 
@@ -51,10 +51,11 @@ class ReviewsController < ApplicationController
     end
 
     def destroy
-        
         @review.destroy
         redirect_to show_path(@review.show)
-      end 
+    end 
+
+
 
     private
 

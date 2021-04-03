@@ -23,8 +23,6 @@
   <%if !@show%>
     <%=f.label "Show:"%>
     <%=f.collection_select(:show_id, @shows, :id, :name) %>
-     <%#elsif @show.exists?%>
-
 
   <%else%>
     <%=f.hidden_field :show_id, value: @show.id%>

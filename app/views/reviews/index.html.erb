@@ -1,9 +1,14 @@
+<!DOCTYPE html>
+<html>
+ <body style="background-color:LightGray;">
 <h1>Search by Rating</h1>
 
 <%=form_with url: reviews_path, method: :get do  |f|%>
  <%=f.number_field :rating %>
-  <%=f.submit "Search"%>
+  <%=f.submit "Filter"%>
 <%end%>
 
 
 <%=render(partial: 'reviews', locals: {reviews: @reviews, index: true})%>
+</body>
+</html>

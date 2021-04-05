@@ -1,7 +1,11 @@
+<!DOCTYPE html>
+<html>
+ <body style="background-color:LightGray;">
 <div><h1> Broadway Shows</h1></div>
 
 <%@shows.each do |show|%>
   <li><%=link_to(show.name, show_path(show))%></li>
 <%end%>
 <br>
-
+</body>
+</html>

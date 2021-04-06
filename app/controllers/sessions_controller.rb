@@ -21,11 +21,7 @@ class SessionsController < ApplicationController
       end
     end
   
-    # def google_oauth2
-    #   @user = User.from_omniauth(request.env["omniauth.auth"])
-    #   sign_in_and_redirect @user
-    # end
-
+    
   
     def google_oauth2
       user = User.find_or_create_by(username: google_auth['info']['email']) do |u|
@@ -38,15 +34,6 @@ class SessionsController < ApplicationController
         redirect_to '/signup'
       end
     end
-
-
-    # def signin_google_oauth2
-    #   access_token = request.env["omniauth.auth"]
-    #   user = User.from_omniauth(access_token)
-    #   session[:user_id] = user.id
-    #   user.google_token = access_token.credentials.access_token
-    #   user.save
-    # end
 
   
     def destroy

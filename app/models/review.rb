@@ -7,7 +7,6 @@ class Review < ApplicationRecord
     validates :rating, :inclusion => 1..5
 
     
-    # scope :sort_rating, lambda {order("rating desc")}
-    # scope :rating, lambda {where("rating >=0").order("updated_at")
+   
 
 end

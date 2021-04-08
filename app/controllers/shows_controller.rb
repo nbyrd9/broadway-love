@@ -32,6 +32,7 @@ class ShowsController < ApplicationController
         else
             @reviews = @show.reviews.select{|r| r.user_id == current_user.id}
             @errors = @show.errors.full_messages
+            
             render :new
         end
     end 

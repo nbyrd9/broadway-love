@@ -5,13 +5,15 @@ class ReviewsController < ApplicationController
     def index 
         if params[:rating]
             @reviews = Review.rating_search(params[:rating])
+           
         else
             @reviews = Review.all
         end
     end
 
+   
+
     def new
-        # byebug
         if params[:show_id]
             @show = Show.find_by(id: params[:show_id])
             @review = @show.reviews.build
@@ -23,7 +25,6 @@ class ReviewsController < ApplicationController
     end
 
     def create
-        # byebug
         @review = Review.create(review_params)
         @review.user = current_user
         if params[:show_id]
@@ -34,6 +35,7 @@ class ReviewsController < ApplicationController
             redirect_to shows_path
         else   
             @shows = Show.all
+            @errors = @review.errors.full_messages
             render :new
         end
     end
